@@ -10,7 +10,7 @@ from config import BANNED_USERS
 
 
 @app.on_message(
-   filters.command(["وقف"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+   filters.command(["وقف","pause"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
     & filters.group
     & ~BANNED_USERS
@@ -27,7 +27,7 @@ async def pause_admin(cli, message: Message, _, chat_id):
 
 
 @app.on_message(
-   filters.command(["وقف"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+   filters.command(["وقف","pause"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
     & filters.channel
     & ~BANNED_USERS
