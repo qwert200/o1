@@ -254,7 +254,7 @@ async def del_back_playlist(client, CallbackQuery, _):
         )
     elif command == "Stop" or command == "End":
         await CallbackQuery.answer()
-        await Anon.stop_stream(chat_id)
+        await DAXX.stop_stream(chat_id)
         await set_loop(chat_id, 0)
         await CallbackQuery.message.reply_text(
             _["admin_9"].format(mention)
@@ -266,7 +266,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             )
         await CallbackQuery.answer()
         await music_off(chat_id)
-        await Anon.pause_stream(chat_id)
+        await DAXX.pause_stream(chat_id)
         await CallbackQuery.message.reply_text(
             _["admin_6"].format(mention),
             reply_markup=close_keyboard
@@ -278,7 +278,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             )
         await CallbackQuery.answer()
         await music_on(chat_id)
-        await Anon.resume_stream(chat_id)
+        await DAXX.resume_stream(chat_id)
         await CallbackQuery.message.reply_text(
             _["admin_8"].format(mention),
             reply_markup=close_keyboard
