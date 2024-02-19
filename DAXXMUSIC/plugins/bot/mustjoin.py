@@ -8,7 +8,7 @@ from DAXXMUSIC import app
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message(filters.group)
+@app.on_message(filters.group  & ~BANNED_USERS)
 @app.on_message(filters.incoming & filters.private, group=-1)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
