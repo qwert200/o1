@@ -277,7 +277,7 @@ def queue_markup(_, videoid, chat_id):
                 
 
     def panel_markup_1(_, videoid, chat_id):
-    buttons = [
+        buttons = [
         [
             InlineKeyboardButton(
                 text="⏸ وقف", callback_data=f"ADMIN Pause|{chat_id}"
