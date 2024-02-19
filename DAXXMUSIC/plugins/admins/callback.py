@@ -30,7 +30,7 @@ from DAXXMUSIC.utils.database import get_assistant
 from DAXXMUSIC.utils.decorators.language import languageCB
 from DAXXMUSIC.utils.formatters import seconds_to_min
 from DAXXMUSIC.utils.inline import close_markup, stream_markup, stream_markup_timer
-from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3,panel_markup_4,panel_markup_5
+from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
 from DAXXMUSIC.utils.thumbnails import get_thumb
 from config import lyrical
@@ -123,16 +123,8 @@ async def del_back_playlist(client, CallbackQuery, _):
         if pages == 2:
             buttons = panel_markup_1(_, videoid, chat_id)
         if pages == 1:
-            buttons = panel_markup_3(_, videoid, chat_id)
-        if pages == 3:
-            buttons = panel_markup_4(_, videoid, chat_id)
-        if pages == 4:
-            buttons = panel_markup_5(_, videoid, chat_id) 
+            buttons = panel_markup_3(_, videoid, chat_id) 
     if state == "Back":
-        if pages == 4:
-            buttons = panel_markup_5(_, videoid, chat_id)
-        if pages == 3:
-            buttons = panel_markup_4(_, videoid, chat_id)
         if pages == 2:
             buttons = panel_markup_2(_, videoid, chat_id)
         if pages == 1:
