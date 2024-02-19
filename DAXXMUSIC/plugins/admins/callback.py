@@ -32,7 +32,7 @@ from DAXXMUSIC.utils.formatters import seconds_to_min
 from DAXXMUSIC.utils.inline import close_markup, stream_markup, stream_markup_timer
 from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3,panel_markup_4,panel_markup_5
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
-from VIPMUSIC.utils.thumbnails import get_thumb
+from DAXXMUSIC.utils.thumbnails import get_thumb
 from config import lyrical
 from config import (
     BANNED_USERS,
