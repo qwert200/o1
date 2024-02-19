@@ -275,40 +275,37 @@ def queue_markup(_, videoid, chat_id):
 
 
                 
-def panel_markup_1(_, videoid, chat_id):
+
+    def panel_markup_1(_, videoid, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text= "✚ ᴀᴅᴅ ɪɴ ᴜʀ ᴘʟᴀʏʟɪsᴛ ✚",
-                callback_data=f"add_playlist {videoid}",
+                text="⏸ وقف", callback_data=f"ADMIN Pause|{chat_id}"
+            ),
+            InlineKeyboardButton(
+                text="▶️ كمل",
+                callback_data=f"ADMIN Resume|{chat_id}",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="🎧 sᴜғғʟᴇ",
-                callback_data=f"ADMIN Shuffle|{chat_id}",
+                text="⏯ تخطي", callback_data=f"ADMIN Skip|{chat_id}"
             ),
             InlineKeyboardButton(
-                text="ʟᴏᴏᴘ ↺", callback_data=f"ADMIN Loop|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(
-                text="◁ 10 sᴇᴄ",
-                callback_data=f"ADMIN 1|{chat_id}",
-            ),
-            InlineKeyboardButton(
-                text="10 sᴇᴄ ▷",
-                callback_data=f"ADMIN 2|{chat_id}",
+                text="⏹ ايقاف", callback_data=f"ADMIN Stop|{chat_id}"
             ),
         ],
         [
             InlineKeyboardButton(
-                text="๏ ʜᴏᴍᴇ ๏",
+                text="◀️السابق",
+                callback_data=f"Pages Back|0|{videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="🔙 رجوع",
                 callback_data=f"MainMarkup {videoid}|{chat_id}",
             ),
             InlineKeyboardButton(
-                text="๏ ɴᴇxᴛ ๏",
+                text="▶التالي️",
                 callback_data=f"Pages Forw|0|{videoid}|{chat_id}",
             ),
         ],
@@ -320,38 +317,34 @@ def panel_markup_2(_, videoid, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["S_B_5"],
-                url=f"https://t.me/{app.username}?startgroup=true",
+                text="🔇 كتم", callback_data=f"ADMIN Mute|{chat_id}"
+            ),
+            InlineKeyboardButton(
+                text="🔊 الغاءالكتم",
+                callback_data=f"ADMIN Unmute|{chat_id}",
             ),
         ],
         [
-                InlineKeyboardButton(
-                    text="🕒 0.5x",
-                    callback_data=f"SpeedUP {chat_id}|0.5",
-                ),
-                InlineKeyboardButton(
-                    text="🕓 0.75x",
-                    callback_data=f"SpeedUP {chat_id}|0.75",
-                ),
-                InlineKeyboardButton(
-                    text="🕤 1.0x",
-                    callback_data=f"SpeedUP {chat_id}|1.0",
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text="🕤 1.5x",
-                    callback_data=f"SpeedUP {chat_id}|1.5",
-                ),
-                InlineKeyboardButton(
-                    text="🕛 2.0x",
-                    callback_data=f"SpeedUP {chat_id}|2.0",
-                ),
-            ],
+            InlineKeyboardButton(
+                text="🔀 عشوائي",
+                callback_data=f"ADMIN Shuffle|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="🔁 ترتيب", callback_data=f"ADMIN Loop|{chat_id}"
+            ),
+        ],
         [
             InlineKeyboardButton(
-                text="๏ ʙᴀᴄᴋ ๏",
+                text="◀السابق️",
                 callback_data=f"Pages Back|1|{videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="🔙 رجوع",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="▶التالي️",
+                callback_data=f"Pages Forw|1|{videoid}|{chat_id}",
             ),
         ],
     ]
@@ -361,33 +354,37 @@ def panel_markup_2(_, videoid, chat_id):
 def panel_markup_3(_, videoid, chat_id):
     buttons = [
         [
-                InlineKeyboardButton(
-                    text="🕒 0.5x",
-                    callback_data=f"SpeedUP {chat_id}|0.5",
-                ),
-                InlineKeyboardButton(
-                    text="🕓 0.75x",
-                    callback_data=f"SpeedUP {chat_id}|0.75",
-                ),
-                InlineKeyboardButton(
-                    text="🕤 1.0x",
-                    callback_data=f"SpeedUP {chat_id}|1.0",
-                ),
-            ],
-            [
-                InlineKeyboardButton(
-                    text="🕤 1.5x",
-                    callback_data=f"SpeedUP {chat_id}|1.5",
-                ),
-                InlineKeyboardButton(
-                    text="🕛 2.0x",
-                    callback_data=f"SpeedUP {chat_id}|2.0",
-                ),
-            ],
+            InlineKeyboardButton(
+                text="⏮ رجوع10ثواني",
+                callback_data=f"ADMIN 1|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="⏭ تقدم10ثواني",
+                callback_data=f"ADMIN 2|{chat_id}",
+            ),
+        ],
         [
             InlineKeyboardButton(
-                text="ʙᴀᴄᴋ",
+                text="⏮ رجوع30ثانيه",
+                callback_data=f"ADMIN 3|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="⏭ تقدم30ثانيه",
+                callback_data=f"ADMIN 4|{chat_id}",
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="◀السابق️",
                 callback_data=f"Pages Back|2|{videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="🔙 رجوع",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
+            ),
+            InlineKeyboardButton(
+                text="▶التالي️",
+                callback_data=f"Pages Forw|2|{videoid}|{chat_id}",
             ),
         ],
     ]
