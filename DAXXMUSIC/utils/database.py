@@ -21,6 +21,12 @@ playtypedb = mongodb.playtypedb
 skipdb = mongodb.skipmode
 sudoersdb = mongodb.sudoers
 usersdb = mongodb.tgusersdb
+privatedb = mongodb.privatechats
+suggdb = mongodb.suggestion
+cleandb = mongodb.cleanmode
+queriesdb = mongodb.queries
+userdb = mongodb.userstats
+videodb = mongodb.vipvideocalls
 
 # Shifting to memory [mongo sucks often]
 active = []
@@ -37,6 +43,14 @@ pause = {}
 playmode = {}
 playtype = {}
 skipmode = {}
+privatechats = {}
+cleanmode = []
+suggestion = {}
+mute = {}
+audio = {}
+video = {}
+
+
 
 
 async def get_assistant_number(chat_id: int) -> str:
@@ -312,9 +326,17 @@ async def music_on(chat_id: int):
 async def music_off(chat_id: int):
     pause[chat_id] = False
 
+# Muted
+async def is_muted(chat_id: int) -> bool:
+    mode = mute.get(chat_id)
+    if not mode:
+        return False
+    return mode
 
-async def get_active_chats() -> list:
-    return active
+
+async def mute_on(chat_id: int):
+    mute[chat_id] = True
+
 
 
 async def is_active_chat(chat_id: int) -> bool:
