@@ -54,54 +54,72 @@ def stream_markup_timer(_, chat_id, played, dur):
     else:
         bar = "—————————◉"
     buttons = [
+    buttons = [
+
         [
             InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+                text=_["S_B_5"],
+                url=f"https://t.me/{app.username}?startgroup=true",
+            ),
+            ],
+            [
+            InlineKeyboardButton(
+                text=_["P_B_1"],
+                callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
             ),
             InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup {videoid}|{chat_id}",
-            )
+                text=_["P_B_2"],
+                callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            ),
+        ],
+        [
+            InlineKeyboardButton(text="Replay", callback_data=f"ADMIN Replay|{chat_id}"),
+            InlineKeyboardButton(text="End", callback_data=f"ADMIN Stop|{chat_id}"),
         ],
         [
             InlineKeyboardButton(
-                text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
-            ) 
+                text="๏ ᴍᴏʀᴇ ๏",
+                callback_data=f"PanelMarkup None|{chat_id}",
+            ),
         ],
     ]
+
     return buttons
 
 
 def stream_markup(_, chat_id):
     buttons = [
+
         [
             InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+                text=_["S_B_5"],
+                url=f"https://t.me/{app.username}?startgroup=true",
+            ),
+            ],
+            [
+            InlineKeyboardButton(
+                text=_["P_B_1"],
+                callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
             ),
             InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup {videoid}|{chat_id}",
-            )
+                text=_["P_B_2"],
+                callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            ),
+        ],
+        [
+            InlineKeyboardButton(text="Replay", callback_data=f"ADMIN Replay|{chat_id}"),
+            InlineKeyboardButton(text="End", callback_data=f"ADMIN Stop|{chat_id}"),
         ],
         [
             InlineKeyboardButton(
-                text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
-            ) 
+                text="๏ ᴍᴏʀᴇ ๏",
+                callback_data=f"PanelMarkup None|{chat_id}",
+            ),
         ],
     ]
+
     return buttons
+
 
 
 
