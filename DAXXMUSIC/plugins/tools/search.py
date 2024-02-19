@@ -60,12 +60,13 @@ def btn(text, value, type="callback_data"):
 
 
 
-@app.on_message(filters.command('google'))
+@app.on_message(
+   filters.command(["google", "جوجل"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"]))
 async def search_(app: app, msg: Message):
     split = msg.text.split(None, 1)
     if len(split) == 1:
-        return await msg.reply_text("**ɢɪᴠᴇ ǫᴜᴇʀʏ ᴛᴏ sᴇᴀʀᴄʜ**")
-    to_del = await msg.reply_text("**sᴇᴀʀᴄʜɪɴɢ ᴏɴ ɢᴏᴏɢʟᴇ...**")
+        return await msg.reply_text("**🚦اكتب بعد جوجل ما تريد البحث عنه**")
+    to_del = await msg.reply_text("**🚦انتظࢪ قليلا...**")
     query = split[1]
     try:
         result = await gsearch.async_search(query)
@@ -109,21 +110,21 @@ async def search_(app: app, msg: Message):
             ]
         )
 
-        txt = f"**ʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇ ʀᴇsᴜʟᴛs ᴏғ ʀǫᴜᴇsᴛᴇᴅ : {query.title()}**"
+        txt = f"**🚦نتائج البحث : {query.title()}**"
         await to_del.delete()
         await msg.reply_text(txt, reply_markup=keyboard)
         return
     except NoResultsFound:
         await to_del.delete()
-        await msg.reply_text("**ɴᴏ ʀᴇsᴜʟᴛ ғᴏᴜɴᴅ ᴄᴏʀʀᴇsᴘᴏɴᴅɪɴɢ ᴛᴏ ʏᴏᴜʀ ǫᴜᴇʀʏ**")
+        await msg.reply_text("**🚦لم يتم العثور على نتائج مطابقة.**")
         return
     except NoResultsOrTrafficError:
         await to_del.delete()
-        await msg.reply_text("****ɴᴏ ʀᴇsᴜʟᴛ ғᴏᴜɴᴅ ᴅᴜᴇ ᴛᴏ ᴛᴏᴏ ᴍᴀɴʏ ᴛʀᴀғғɪᴄ**")
+        await msg.reply_text("****🚦لم يتم العثور على نتائج مطابقة حاول مرة ثانية**")
         return
     except Exception as e:
         await to_del.delete()
-        await msg.reply_text(f"**sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ :\nʀᴇᴘᴏʀᴛ ᴀᴛ ɪᴛ** @iam_daxx")
+        await msg.reply_text(f"**اهلا بك حبيبي\n هذا البوت مقدم من** @ah_2_v")
         print(f"error : {e}")
         return
 
