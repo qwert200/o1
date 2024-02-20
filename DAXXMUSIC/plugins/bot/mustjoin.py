@@ -8,7 +8,7 @@ from DAXXMUSIC import app
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message(filters.regex('^/start$') & filters.private & filters.group)
+@app.on_message(filters.regex('^/start$') & filters.group)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
         return
