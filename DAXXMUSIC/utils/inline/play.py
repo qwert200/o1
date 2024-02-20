@@ -93,18 +93,19 @@ def stream_markup(_, videoid, chat_id):
             ),
             InlineKeyboardButton(
                 text=_["PL_B_3"],
-                callback_data=f"PanelMarkup {videoid}|{chat_id}",
-            ),
+                callback_data=f"PanelMarkup {videoid}|{chat_id}"),
         ],
+        [
             InlineKeyboardButton( 
                 text="المزيد",
-                callback_data=f"PanelMarkup None|{chat_id}",
-            ),
+                callback_data=f"PanelMarkup None|{chat_id}"),
         ],
+        [
             InlineKeyboardButton( 
                 text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
-            ), 
+            )
         ],
+        [
             InlineKeyboardButton(
                 text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
             ) 
@@ -118,12 +119,11 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
         [
             InlineKeyboardButton(
                 text=_["P_B_1"],
-                callback_data=f"VIPPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
+                callback_data=f"DAXXPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}",
             ),
-        ],
-            InlineKeyboardButton( 
+            InlineKeyboardButton(
                 text=_["P_B_2"],
-                callback_data=f"VIPPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
+                callback_data=f"DAXXPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}",
             ),
         ],
         [
