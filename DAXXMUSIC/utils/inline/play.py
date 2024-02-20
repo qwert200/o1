@@ -68,6 +68,7 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
             InlineKeyboardButton(
                 text="المزيد",
                 callback_data=f"PanelMarkup None|{chat_id}",
+            ),
         ],
         [
             InlineKeyboardButton(
@@ -99,6 +100,7 @@ def stream_markup(_, videoid, chat_id):
             InlineKeyboardButton(
                 text="المزيد",
                 callback_data=f"PanelMarkup None|{chat_id}",
+            ),
         ],
         [
             InlineKeyboardButton(
