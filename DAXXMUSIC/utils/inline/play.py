@@ -1,21 +1,13 @@
 import math
-from typing import Union
+from config import SUPPORT_CHAT, OWNER_USERNAME
 from pyrogram.types import InlineKeyboardButton
-
+from DAXXMUSIC import app
+import config
 from DAXXMUSIC.utils.formatters import time_to_seconds
 
-from DAXXMUSIC import app
-
-def track_markup(_, user_id, channel, fplay):
+def track_markup(_, videoid, user_id, channel, fplay):
     buttons = [
-
         [
-            InlineKeyboardButton(
-                text=_["S_B_5"],
-                url=f"https://t.me/{app.username}?startgroup=true",
-            ),
-            ],
-            [
             InlineKeyboardButton(
                 text=_["P_B_1"],
                 callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
@@ -26,12 +18,8 @@ def track_markup(_, user_id, channel, fplay):
             ),
         ],
         [
-            InlineKeyboardButton(text="Replay", callback_data=f"ADMIN Replay|{chat_id}"),
-            InlineKeyboardButton(text="End", callback_data=f"ADMIN Stop|{chat_id}"),
-        ],
-        [
             InlineKeyboardButton(
-                text="๏ ᴍᴏʀᴇ ๏",
+                text="المزيد",
                 callback_data=f"PanelMarkup None|{chat_id}",
             ),
         ],
@@ -45,87 +33,84 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
     umm = math.floor(percentage)
-    if 0 < umm <= 50:
+    if 0 < umm <= 10:
         bar = "◉—————————"
-    elif 50 < umm < 60:
+    elif 10 < umm < 20:
         bar = "—◉————————"
-    elif 60 <= umm < 70:
+    elif 20 <= umm < 30:
         bar = "——◉———————"
-    elif 70 <= umm < 80:
+    elif 30 <= umm < 40:
         bar = "———◉——————"
-    elif 80 <= umm < 95:
+    elif 40 <= umm < 50:
+        bar = "————◉—————"
+    elif 50 <= umm < 60:
+        bar = "—————◉————"
+    elif 60 <= umm < 70:
         bar = "——————◉———"
+    elif 70 <= umm < 80:
+        bar = "———————◉——"
+    elif 80 <= umm < 95:
+        bar = "————————◉—"
     else:
         bar = "—————————◉"
-        
-    buttons  = [
-
+    buttons = [
         [
             InlineKeyboardButton(
-                text=_["S_B_5"],
-                url=f"https://t.me/{app.username}?startgroup=true",
-            ),
-          ],
-          [
-            InlineKeyboardButton(
-                text="ᴘᴀᴜsᴇ",
-                callback_data=f"ADMIN Pause|{chat_id}",
+                text=_["PL_B_2"],
+                callback_data=f"add_playlist {videoid}",
             ),
             InlineKeyboardButton(
-                text="sᴋɪᴘ", callback_data=f"ADMIN Skip|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="sᴛᴏᴘ", callback_data=f"ADMIN Stop|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(text="ʀᴇsᴜᴍᴇ", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="ʀᴇᴘʟᴀʏ", callback_data=f"ADMIN Replay|{chat_id}"),
+                text=_["PL_B_3"],
+                callback_data=f"PanelMarkup {videoid}|{chat_id}",
+            )
         ],
         [
             InlineKeyboardButton(
-                text="๏ ᴍᴏʀᴇ ๏",
+                text="المزيد",
                 callback_data=f"PanelMarkup None|{chat_id}",
-            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
+            ) 
         ],
     ]
-
     return buttons
+        
 
+def stream_markup(_, videoid, chat_id):
+    buttons = [
 
-def stream_markup(_, chat_id):
-    buttons  = [
-
-        [
             InlineKeyboardButton(
-                text=_["S_B_5"],
-                url=f"https://t.me/{app.username}?startgroup=true",
-            ),
-          ],
-          [
-            InlineKeyboardButton(
-                text="ᴘᴀᴜsᴇ",
-                callback_data=f"ADMIN Pause|{chat_id}",
+                text=_["PL_B_2"],
+                callback_data=f"add_playlist {videoid}",
             ),
             InlineKeyboardButton(
-                text="sᴋɪᴘ", callback_data=f"ADMIN Skip|{chat_id}"
-            ),
-            InlineKeyboardButton(
-                text="sᴛᴏᴘ", callback_data=f"ADMIN Stop|{chat_id}"
-            ),
-        ],
-        [
-            InlineKeyboardButton(text="ʀᴇsᴜᴍᴇ", callback_data=f"ADMIN Resume|{chat_id}"),
-            InlineKeyboardButton(text="ʀᴇᴘʟᴀʏ", callback_data=f"ADMIN Replay|{chat_id}"),
+                text=_["PL_B_3"],
+                callback_data=f"PanelMarkup {videoid}|{chat_id}",
+            )
         ],
         [
             InlineKeyboardButton(
-                text="๏ ᴍᴏʀᴇ ๏",
+                text="المزيد",
                 callback_data=f"PanelMarkup None|{chat_id}",
-            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
+            ) 
         ],
     ]
-
     return buttons
 
 
