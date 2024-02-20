@@ -9,7 +9,7 @@ from DAXXMUSIC import app
 MUST_JOIN = "ah07v"
 #------------------------
 @app.on_message(
-   filters.command
+   filters.incoming
             
     & filters.group)
 @app.on_message(filters.incoming & filters.private, group=-1)
