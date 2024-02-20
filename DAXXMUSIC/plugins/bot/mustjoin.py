@@ -8,7 +8,10 @@ from DAXXMUSIC import app
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message(filters.group)
+@app.on_message(
+   filters.command(["تشغيل", "فيديو", "شغل", "play", "playforce", "vplayforce", "cplayforce", "cvplayforce","song","يوتيوب","جوجل","ايقاف","انهاء","stop","pause","skip","تخطي","استئناف","ترجمه","الاعدادات","اعدادات التشغيل","احصائيات"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+            
+    & filters.group)
 @app.on_message(filters.incoming & filters.private, group=-1)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
