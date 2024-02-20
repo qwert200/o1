@@ -84,30 +84,26 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     return buttons
         
 
-def stream_markup(_, videoid, chat_id):
+def stream_markup(_, chat_id):
     buttons = [
-
+        [
             InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+                text=_["P_B_1"],
+                callback_data=f"MusicStream {videoid}|{user_id}|a|{channel}|{fplay}",
             ),
             InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup {videoid}|{chat_id}"),
+                text=_["P_B_2"],
+                callback_data=f"MusicStream {videoid}|{user_id}|v|{channel}|{fplay}",
+            ),
         ],
-            InlineKeyboardButton( 
-                text="المزيد",
-                callback_data=f"PanelMarkup None|{chat_id}"),
-        ],
-            InlineKeyboardButton( 
-                text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
-            )
-        ],
+        [
             InlineKeyboardButton(
-                text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
-            ) 
+                text="المزيد",
+                callback_data=f"PanelMarkup None|{chat_id}",
+            ),
         ],
     ]
+
     return buttons
 
 
