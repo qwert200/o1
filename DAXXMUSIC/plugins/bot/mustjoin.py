@@ -11,12 +11,12 @@ MUST_JOIN = "ah07v"
 #------------------------
 @app.on_message( filters.incoming & filters.group, group=-1)
 @app.on_message( filters.incoming & filters.private, group=-1)
-async def must_join_channel(_: Client, message: Message):
+async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
         return
     try:
         try:
-            await app.get_chat_member(MUST_JOIN,user.id)
+            await app.get_chat_member(MUST_JOIN, msg.from_user.id)
         except UserNotParticipant:
             if MUST_JOIN.isalpha():
                 link = "https://t.me/" + MUST_JOIN
