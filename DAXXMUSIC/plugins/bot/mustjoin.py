@@ -1,6 +1,5 @@
 
 from pyrogram import Client, filters
-from strings.filters import command
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 from DAXXMUSIC import app
@@ -9,7 +8,7 @@ from DAXXMUSIC import app
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message(~filters.edited & filters.incoming & filters.private, group=-1)
+@app.on_message(filters.regex('^/start$') & filters.private & filters.group)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
         return
