@@ -98,9 +98,7 @@ def stream_markup(_, videoid, chat_id):
             InlineKeyboardButton(
                 text="المزيد",
                 callback_data=f"PanelMarkup None|{chat_id}",
-            )
-        ],
-        [
+            ),
             InlineKeyboardButton(
                 text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
             )
