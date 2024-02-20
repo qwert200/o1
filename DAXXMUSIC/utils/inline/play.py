@@ -1,11 +1,13 @@
 import math
-from config import SUPPORT_CHAT, OWNER_USERNAME
+from typing import Union
 from pyrogram.types import InlineKeyboardButton
-from DAXXMUSIC import app
-import config
+
 from DAXXMUSIC.utils.formatters import time_to_seconds
 
-def track_markup(_, videoid, user_id, channel, fplay):
+from DAXXMUSIC import app
+
+
+def track_markup(_, user_id, channel, fplay):
     buttons = [
         [
             InlineKeyboardButton(
@@ -54,6 +56,12 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     else:
         bar = "—————————◉"
     buttons = [
+                [
+            InlineKeyboardButton(
+                text=f"{played} {bar} {dur}",
+                callback_data="GetTimer",
+            )
+        ],
         [
             InlineKeyboardButton(
                 text=_["PL_B_2"],
