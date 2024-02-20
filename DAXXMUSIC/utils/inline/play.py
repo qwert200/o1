@@ -81,11 +81,6 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
         [
             InlineKeyboardButton(
                 text="‹ قـناة الـسورس ›", url="https://t.me/ah07v"
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                text="اضغط لاضافه البوت لمجموعتك", url="https://t.me/USER_BOT?startgroup=true"
             ) 
         ],
     ]
