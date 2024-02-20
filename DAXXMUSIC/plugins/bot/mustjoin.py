@@ -8,11 +8,7 @@ from DAXXMUSIC import app
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message(
-   filters.incoming
-            
-    & filters.group, group=-1)
-@app.on_message(filters.incoming & filters.private, group=-1)
+@app.on_message(~filters.edited & filters.incoming & filters.private, group=-1)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
         return
@@ -26,8 +22,7 @@ async def must_join_channel(app: Client, msg: Message):
                 chat_info = await app.get_chat(MUST_JOIN)
                 link = chat_info.invite_link
             try:
-                await msg.reply_photo(
-                    photo="https://te.legra.ph/file/ba9d2c3c527ae4d01709a.jpg", caption=f"︙عـذراً، عـلـيـڪ الانـضـمـام الى هـذهِ الـقـنـاة أولاً  [ ♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚ ]({link}) \n︙اشـتـرڪ ثـم أرسـل : /start",
+                await msg.reply(f"︙عـذراً، عـلـيـڪ الانـضـمـام الى هـذهِ الـقـنـاة أولاً  [ ♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚ ]({link}) \n︙اشـتـرڪ ثـم أرسـل : /start",
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
