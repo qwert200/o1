@@ -191,6 +191,8 @@ stream_2 : "➲ <b>بدء البث |</b>\n\n<b>‣ نوع البث :</b> بث م
 
 CLOSE_BUTTON : "إغلاق"
 BACK_BUTTON : "رجوع"
+NEXT_PAGE: ">"
+BACK_PAGE: "<"
 
 S_B_1 : "أضفني"
 S_B_2 : "الدعم"
