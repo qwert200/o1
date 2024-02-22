@@ -1,16 +1,16 @@
 from typing import Union
-
 from pyrogram import filters, types
 from pyrogram.types import InlineKeyboardMarkup, Message, InlineKeyboardButton
-
 from DAXXMUSIC import app
-from DAXXMUSIC.utils import first_page, second_page
+from DAXXMUSIC.utils import help_pannel
 from DAXXMUSIC.utils.database import get_lang
 from DAXXMUSIC.utils.decorators.language import LanguageStart, languageCB
 from DAXXMUSIC.utils.inline.help import help_back_markup, private_help_panel
 from config import BANNED_USERS, START_IMG_URL, SUPPORT_CHAT
 from strings import get_string, helpers
-from DAXXMUSIC.misc import SUDOERS
+from DAXXMUSIC.utils.stuffs.buttons import BUTTONS
+from DAXXMUSIC.utils.stuffs.helper import Helper
+
 
 @app.on_message(filters.command(["help"]) & filters.private & ~BANNED_USERS)
 @app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
@@ -26,7 +26,7 @@ async def helper_private(
         chat_id = update.message.chat.id
         language = await get_lang(chat_id)
         _ = get_string(language)
-        keyboard = first_page(_)
+        keyboard = help_pannel(_, True)
         await update.edit_message_text(
             _["help_1"].format(SUPPORT_CHAT), reply_markup=keyboard
         )
