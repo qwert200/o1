@@ -1,7 +1,8 @@
-import asyncio
-from telegram import CallbackQuery
+import random
+
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
+
 
 from DAXXMUSIC import YouTube, app
 from DAXXMUSIC.core.call import DAXX
@@ -29,22 +30,13 @@ from pyrogram.errors import (
 from DAXXMUSIC.utils.database import get_assistant
 from DAXXMUSIC.utils.decorators.language import languageCB
 from DAXXMUSIC.utils.formatters import seconds_to_min
-from DAXXMUSIC.utils.inline import close_markup, stream_markup, telegram_markup
-from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3
+from DAXXMUSIC.utils.inline.play import (panel_markup_1,
+                                          panel_markup_2,
+                                          panel_markup_3,
+                                          stream_markup,
+                                          telegram_markup)
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
-from DAXXMUSIC.utils.thumbnails import get_thumb
-from config import lyrical
-from config import (
-    BANNED_USERS,
-    SOUNCLOUD_IMG_URL,
-    STREAM_IMG_URL,
-    TELEGRAM_AUDIO_URL,
-    TELEGRAM_VIDEO_URL,
-    adminlist,
-    confirmer,
-    votemode,
-)
-from strings import get_string
+from DAXXMUSIC.utils.thumbnails import gen_thumb
 wrong = {}
 
 
