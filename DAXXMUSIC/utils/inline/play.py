@@ -79,7 +79,7 @@ def stream_markup(_, chat_id):
         [
             InlineKeyboardButton(
                 text="๏ ᴍᴏʀᴇ ๏",
-                callback_data=f"PanelMarkup {videoid}|{chat_id}",,
+                callback_data=f"PanelMarkup {videoid}|{chat_id}",
             ),
         ],
         [
