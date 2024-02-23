@@ -27,7 +27,7 @@ selections = [
 def stream_markup_timer(_,  chat_id, played, dur):
     bar = random.choice(selections)
     buttons = [
-                [
+        [
             InlineKeyboardButton(
                 text=f"{played} {bar} {dur}",
                 callback_data="GetTimer"),
@@ -50,7 +50,7 @@ def stream_markup_timer(_,  chat_id, played, dur):
 def telegram_markup_timer(_, chat_id, played, dur):
     bar = random.choice(selections)
     buttons = [
-                [
+        [
             InlineKeyboardButton(
                 text=f"{played} {bar} {dur}",
                 callback_data="GetTimer"),
@@ -75,11 +75,6 @@ def telegram_markup_timer(_, chat_id, played, dur):
 
 def stream_markup(_, chat_id):
     buttons = [
-                [
-            InlineKeyboardButton(
-                text=f"{played} {bar} {dur}",
-                callback_data="GetTimer"),
-        ],
         [
             InlineKeyboardButton(
                 text="๏ ᴍᴏʀᴇ ๏",
@@ -102,13 +97,14 @@ def telegram_markup(_, chat_id):
                 text="๏ ᴍᴏʀᴇ ๏",
                 callback_data=f"PanelMarkup None|{chat_id}",
             ),
-            InlineKeyboardButton(
-                text=_["CLOSE_BUTTON"], callback_data="close"
-            ),
         ],
+        [
+         InlineKeyboardButton(text="ᴅᴇᴠ 💕", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="💌 ɢʀᴏᴜᴘ", url=f"{SUPPORT_CHAT}",),
+        ],
+        [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
     return buttons
-
 
 ## Search Query Inline
 
