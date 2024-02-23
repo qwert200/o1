@@ -76,7 +76,7 @@ async def del_back_playlist(client, CallbackQuery, _):
     callback_request = callback_data.split(None, 1)[1]
     videoid, chat_id = callback_request.split("|")
     if videoid == str(None):
-        buttons = stream_markup(_, chat_id)
+        buttons = stream_markup(_, videoid, chat_id)
     else:
         buttons = telegram_markup(_, chat_id)
     chat_id = CallbackQuery.message.chat.id
@@ -317,7 +317,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 )
             except Exception:
                 return await mystic.edit_text(_["call_9"])
-            button = stream_markup(_, chat_id)
+            button = stream_markup(_, videoid, chat_id)
             img = await gen_thumb(videoid)
             run = await CallbackQuery.message.reply_photo(
                 photo=img,
@@ -383,7 +383,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                 db[chat_id][0]["mystic"] = run
                 db[chat_id][0]["markup"] = "tg"
             else:
-                button = stream_markup(_, chat_id)
+                button = stream_markup(_, videoid, chat_id)
                 img = await gen_thumb(videoid)
                 run = await CallbackQuery.message.reply_photo(
                     photo=img,
