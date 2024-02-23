@@ -40,7 +40,7 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
             ),
             InlineKeyboardButton(
                 text=_["PL_B_3"],
-                callback_data=f"PanelMarkup {videoid}|{chat_id}",
+                callback_data=f"PanelMarkup None|{chat_id}",
             ),
         ],
         [
