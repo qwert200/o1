@@ -24,23 +24,23 @@ selections = [
 ## After Edits with Timer Bar
 
 
-def stream_markup_timer(_, videoid, chat_id, played, dur):
+def stream_markup_timer(_,  chat_id, played, dur):
     bar = random.choice(selections)
     buttons = [
         [
             InlineKeyboardButton(
                 text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
-            )
+                callback_data="GetTimer"),
         ],
         [
             InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+                text="๏ ᴍᴏʀᴇ ๏",
+                callback_data=f"PanelMarkup None|{chat_id}",
             ),
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",),
+        ],
+        [
+         InlineKeyboardButton(text="ᴅᴇᴠ 💕", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="💌 ɢʀᴏᴜᴘ", url=f"{SUPPORT_CHAT}",),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
@@ -53,13 +53,17 @@ def telegram_markup_timer(_, chat_id, played, dur):
         [
             InlineKeyboardButton(
                 text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
-            )
+                callback_data="GetTimer"),
         ],
         [
             InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",),
+                text="๏ ᴍᴏʀᴇ ๏",
+                callback_data=f"PanelMarkup None|{chat_id}",
+            ),
+        ],
+        [
+         InlineKeyboardButton(text="ᴅᴇᴠ 💕", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="💌 ɢʀᴏᴜᴘ", url=f"{SUPPORT_CHAT}",),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
@@ -69,34 +73,38 @@ def telegram_markup_timer(_, chat_id, played, dur):
 ## Inline without Timer Bar
 
 
-def stream_markup(_, videoid, chat_id):
+def stream_markup(_, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["PL_B_2"],
-                callback_data=f"add_playlist {videoid}",
+                text="๏ ᴍᴏʀᴇ ๏",
+                callback_data=f"PanelMarkup None|{chat_id}",
             ),
-            InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",),
+        ],
+        [
+         InlineKeyboardButton(text="ᴅᴇᴠ 💕", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="💌 ɢʀᴏᴜᴘ", url=f"{SUPPORT_CHAT}",),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
     return buttons
-
 
 
 def telegram_markup(_, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["PL_B_3"],
-                callback_data=f"PanelMarkup None|{chat_id}",),
+                text="๏ ᴍᴏʀᴇ ๏",
+                callback_data=f"PanelMarkup None|{chat_id}",
+            ),
+        ],
+        [
+         InlineKeyboardButton(text="ᴅᴇᴠ 💕", user_id=config.OWNER_ID),
+         InlineKeyboardButton(text="💌 ɢʀᴏᴜᴘ", url=f"{SUPPORT_CHAT}",),
         ],
         [InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close")],
     ]
     return buttons
-
 
 ## Search Query Inline
 
