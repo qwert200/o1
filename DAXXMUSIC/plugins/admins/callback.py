@@ -1,29 +1,50 @@
-import random
-
+import asyncio
+from telegram import CallbackQuery
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS,
-                    SOUNCLOUD_IMG_URL, STREAM_IMG_URL,
-                    TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL, adminlist)
 from DAXXMUSIC import YouTube, app
-from DAXXMUSIC.core.call import Champu
+from DAXXMUSIC.core.call import DAXX
 from DAXXMUSIC.misc import SUDOERS, db
-from DAXXMUSIC.utils.database import (is_active_chat,
-                                       is_music_playing, is_muted,
-                                       is_nonadmin_chat, music_off,
-                                       music_on, mute_off, mute_on,
-                                       set_loop)
+from DAXXMUSIC.utils.database import (
+    get_active_chats,
+    get_lang,
+    get_upvote_count,
+    is_active_chat,
+    is_music_playing,
+    is_nonadmin_chat,
+    music_off,
+    music_on,
+    mute_off,
+    mute_on,
+    is_muted,
+    set_loop,
+)
+from pyrogram.errors import (
+    ChatAdminRequired,
+    InviteRequestSent,
+    UserAlreadyParticipant,
+    UserNotParticipant,
+)
+from DAXXMUSIC.utils.database import get_assistant
 from DAXXMUSIC.utils.decorators.language import languageCB
 from DAXXMUSIC.utils.formatters import seconds_to_min
-from DAXXMUSIC.utils.inline.play import (panel_markup_1,
-                                          panel_markup_2,
-                                          panel_markup_3,
-                                          stream_markup,
-                                          telegram_markup)
+from DAXXMUSIC.utils.inline import close_markup, stream_markup, stream_markup_timer
+from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
-from DAXXMUSIC.utils.thumbnails import gen_thumb
-
+from DAXXMUSIC.utils.thumbnails import get_thumb
+from config import lyrical
+from config import (
+    BANNED_USERS,
+    SOUNCLOUD_IMG_URL,
+    STREAM_IMG_URL,
+    TELEGRAM_AUDIO_URL,
+    TELEGRAM_VIDEO_URL,
+    adminlist,
+    confirmer,
+    votemode,
+)
+from strings import get_string
 wrong = {}
 
 
