@@ -29,7 +29,7 @@ from pyrogram.errors import (
 from DAXXMUSIC.utils.database import get_assistant
 from DAXXMUSIC.utils.decorators.language import languageCB
 from DAXXMUSIC.utils.formatters import seconds_to_min
-from DAXXMUSIC.utils.inline import close_markup, stream_markup, stream_markup_timer
+from DAXXMUSIC.utils.inline import close_markup, stream_markup, stream_markup_timer, telegram_markup, telegram_markup_time
 from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
 from DAXXMUSIC.utils.thumbnails import get_thumb
