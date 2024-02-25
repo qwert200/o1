@@ -33,7 +33,6 @@ from DAXXMUSIC.utils.decorators.language import languageCB
 from DAXXMUSIC.utils.formatters import seconds_to_min
 from DAXXMUSIC.utils.inline.play import panel_markup_1, stream_markup, telegram_markup
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
-from DAXXMUSIC.utils.thumbnails import get_thumb
 from config import lyrical
 from config import (
     BANNED_USERS,
@@ -46,7 +45,6 @@ from config import (
     votemode,
 )
 from strings import get_string
-from DAXXMUSIC.utils.theme import check_theme
 
 wrong = {}
 
