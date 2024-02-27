@@ -24,7 +24,7 @@ selections = [
 ## After Edits with Timer Bar
 
 
-def stream_markup_timer(_,  chat_id, played, dur):
+def stream_markup_timer(_, videoid, chat_id, played, dur):
     bar = random.choice(selections)
     buttons = [
         [
@@ -35,7 +35,7 @@ def stream_markup_timer(_,  chat_id, played, dur):
         [
             InlineKeyboardButton(
                 text="๏ ᴍᴏʀᴇ ๏",
-                callback_data=f"PanelMarkup None|{chat_id}",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
             ),
         ],
         [
@@ -47,7 +47,7 @@ def stream_markup_timer(_,  chat_id, played, dur):
     return buttons
 
 
-def telegram_markup_timer(_, chat_id, played, dur):
+def telegram_markup_timer(_, videoid, chat_id, played, dur):
     bar = random.choice(selections)
     buttons = [
         [
@@ -58,7 +58,7 @@ def telegram_markup_timer(_, chat_id, played, dur):
         [
             InlineKeyboardButton(
                 text="๏ ᴍᴏʀᴇ ๏",
-                callback_data=f"PanelMarkup None|{chat_id}",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
             ),
         ],
         [
@@ -73,12 +73,12 @@ def telegram_markup_timer(_, chat_id, played, dur):
 ## Inline without Timer Bar
 
 
-def stream_markup(_, chat_id):
+def stream_markup(_, videoid, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
                 text="๏ ᴍᴏʀᴇ ๏",
-                callback_data=f"PanelMarkup None|{chat_id}",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
             ),
         ],
         [
@@ -90,12 +90,12 @@ def stream_markup(_, chat_id):
     return buttons
 
 
-def telegram_markup(_, chat_id):
+def telegram_markup(_, videoid, chat_id):
     buttons = [
         [
             InlineKeyboardButton(
                 text="๏ ᴍᴏʀᴇ ๏",
-                callback_data=f"PanelMarkup None|{chat_id}",
+                callback_data=f"MainMarkup {videoid}|{chat_id}",
             ),
         ],
         [
