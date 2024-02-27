@@ -39,22 +39,7 @@ NEXI_VID = [
 
 ]
 
-ch = "@ah07v"; // معرف القناة
-$owner = 1748768168; // ايديك 
-$users = explode("\n",file_get_contents( users ));
-if($update){
-    
-    $from_id = $update->message->from->id;
-    if(!in_array($chat_id,$users)){
-        file_put_contents( users ,$from_id."\n",FILE_APPEND);
-    }
-    $in_chat = bot( getChatMember ,[ chat_id =>$ch, user_id =>$from_id])->result->status;
-    if($in_chat ==  left  or $in_chat ==  banned ){
-        bot( sendMessage ,[
-             chat_id =>$chat_id,
-             text => البوت لن يعمل الا بعد الاشتراك في القناة .  .$ch
-        ]);
-        exit();
+
 
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
