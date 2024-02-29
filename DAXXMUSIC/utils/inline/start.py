@@ -27,7 +27,8 @@ def private_panel(_):
             InlineKeyboardButton(text="‹ قناة البوت ›", url=config.SUPPORT_CHANNEL),
         ],
         [
-            text="‹ اضف البوت لمجموعتك ›", url=f"https://t.me/{app.username}?startgroup=true"),
+            InlineKeyboardButton(
+                text="‹ اضف البوت لمجموعتك ›", url=f"https://t.me/{app.username}?startgroup=true"),
         ],
     ]
     return buttons
