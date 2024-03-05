@@ -15,6 +15,9 @@ from DAXXMUSIC.utils.database import (
     is_nonadmin_chat,
     music_off,
     music_on,
+    mute_off,
+    mute_on,
+    is_muted,
     set_loop,
 )
 from pyrogram.errors import (
@@ -27,6 +30,7 @@ from DAXXMUSIC.utils.database import get_assistant
 from DAXXMUSIC.utils.decorators.language import languageCB
 from DAXXMUSIC.utils.formatters import seconds_to_min
 from DAXXMUSIC.utils.inline import close_markup, stream_markup, stream_markup_timer
+from DAXXMUSIC.utils.inline.play import panel_markup_1, panel_markup_2, panel_markup_3
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
 from DAXXMUSIC.utils.thumbnails import get_thumb
 from config import (
@@ -57,6 +61,80 @@ async def unban_assistant(_, callback: CallbackQuery):
     except Exception as e:
         await callback.answer(f"𝙁𝙖𝙞𝙡𝙚𝙙 𝙏𝙤 𝙐𝙣𝙗𝙖𝙣 𝙈𝙮 𝘼𝙨𝙨𝙞𝙨𝙩𝙖𝙣𝙩 𝘽𝙚𝙘𝙖𝙪𝙨𝙚 𝙄 𝘿𝙤𝙣'𝙩 𝙃𝙖𝙫𝙚 𝘽𝙖𝙣 𝙋𝙤𝙬𝙚𝙧\n\n➻ 𝙋𝙡𝙚𝙖𝙨𝙚 𝙋𝙧𝙤𝙫𝙞𝙙𝙚 𝙈𝙚 𝘽𝙖𝙣 𝙋𝙤𝙬𝙚𝙧 𝙎𝙤 𝙏𝙝𝙖𝙩 𝙄 𝙘𝙖𝙣 𝙐𝙣𝙗𝙖𝙣 𝙈𝙮 𝘼𝙨𝙨𝙞𝙨𝙩𝙖𝙣𝙩 𝙄𝙙", show_alert=True)
 
+@app.on_callback_query(filters.regex("PanelMarkup") & ~BANNED_USERS)
+@languageCB
+async def markup_panel(client, CallbackQuery: CallbackQuery, _):
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    videoid, chat_id = callback_request.split("|")
+    chat_id = CallbackQuery.message.chat.id
+    buttons = panel_markup_1(_, videoid, chat_id)
+    try:
+        await CallbackQuery.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
+    except:
+        return
+    if chat_id not in wrong:
+        wrong[chat_id] = {}
+    wrong[chat_id][CallbackQuery.message.message_id] = False
+
+
+@app.on_callback_query(filters.regex("MainMarkup") & ~BANNED_USERS)
+@languageCB
+async def del_back_playlist(client, CallbackQuery, _):
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    videoid, chat_id = callback_request.split("|")
+    if videoid == str(None):
+        buttons = stream_markup(_, chat_id)
+    chat_id = CallbackQuery.message.chat.id
+    try:
+        await CallbackQuery.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
+    except:
+        return
+    if chat_id not in wrong:
+        wrong[chat_id] = {}
+    wrong[chat_id][CallbackQuery.message.message_id] = True
+
+
+@app.on_callback_query(filters.regex("Pages") & ~BANNED_USERS)
+@languageCB
+async def del_back_playlist(client, CallbackQuery, _):
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    state, pages, videoid, chat = callback_request.split("|")
+    chat_id = int(chat)
+    pages = int(pages)
+    if state == "Forw":
+        if pages == 0:
+            buttons = panel_markup_2(_, videoid, chat_id)
+        if pages == 2:
+            buttons = panel_markup_1(_, videoid, chat_id)
+        if pages == 1:
+            buttons = panel_markup_3(_, videoid, chat_id) 
+    if state == "Back":
+        if pages == 2:
+            buttons = panel_markup_2(_, videoid, chat_id)
+        if pages == 1:
+            buttons = panel_markup_1(_, videoid, chat_id)
+        if pages == 0:
+            buttons = panel_markup_3(_, videoid, chat_id)
+    try:
+        await CallbackQuery.edit_message_reply_markup(
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
+    except:
+        return
+
+
+downvote = {}
+downvoters = {}
 
 @app.on_callback_query(filters.regex("ADMIN") & ~BANNED_USERS)
 @languageCB
@@ -173,7 +251,61 @@ async def del_back_playlist(client, CallbackQuery, _):
         await DAXX.stop_stream(chat_id)
         await set_loop(chat_id, 0)
         await CallbackQuery.message.reply_text(
-            _["admin_5"].format(mention), reply_markup=close_markup(_)
+            _["admin_9"].format(mention)
+        )
+    if command == "Mute":
+        if not await is_music_playing(chat_id):
+            return await CallbackQuery.answer(
+                _["admin_5"], show_alert=True
+            )
+        await CallbackQuery.answer()
+        await music_off(chat_id)
+        await DAXX.pause_stream(chat_id)
+        await CallbackQuery.message.reply_text(
+            _["admin_6"].format(mention),
+            reply_markup=close_keyboard
+        )
+    elif command == "Unmute":
+        if await is_music_playing(chat_id):
+            return await CallbackQuery.answer(
+                _["admin_7"], show_alert=True
+            )
+        await CallbackQuery.answer()
+        await music_on(chat_id)
+        await DAXX.resume_stream(chat_id)
+        await CallbackQuery.message.reply_text(
+            _["admin_8"].format(mention),
+            reply_markup=close_keyboard
+        )
+    elif command == "Loop":
+        await CallbackQuery.answer()
+        await set_loop(chat_id, 3)
+        await CallbackQuery.message.reply_text(
+            _["admin_25"].format(mention, 3)
+        )
+    elif command == "Shuffle":
+        check = db.get(chat_id)
+        if not check:
+            return await CallbackQuery.answer(
+                _["admin_21"], show_alert=True
+            )
+        try:
+            popped = check.pop(0)
+        except:
+            return await CallbackQuery.answer(
+                _["admin_22"], show_alert=True
+            )
+        check = db.get(chat_id)
+        if not check:
+            check.insert(0, popped)
+            return await CallbackQuery.answer(
+                _["admin_22"], show_alert=True
+            )
+        await CallbackQuery.answer()
+        random.shuffle(check)
+        check.insert(0, popped)
+        await CallbackQuery.message.reply_text(
+            _["admin_23"].format(mention)
         )
         await CallbackQuery.message.delete()
     elif command == "Skip" or command == "Replay":
