@@ -40,7 +40,6 @@ from DAXXMUSIC.utils.inline import (
     close_keyboard,
 )
 from DAXXMUSIC.utils.stream.autoclear import auto_clean
-from DAXXMUSIC.utils.thumbnails import gen_thumb
 
 wrong = {}
 checker = {}
