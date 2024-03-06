@@ -657,9 +657,9 @@ async def slider_queries(client, CallbackQuery, _):
 
 
 @app.on_message(
-   filters.command(["تشغيل", "فيديو", "شغل", "play", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+   filters.command(["تشغيل ", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
-    & filters.channel
+    & filters.group
     & ~BANNED_USERS
 )
 @PlayWrapper
