@@ -26,7 +26,7 @@ from config import BANNED_USERS, lyrical
 
 
 @app.on_message(
-   filters.command(["تشغيل ", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+   filters.command(["تشغيل", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
     & filters.group
     & ~BANNED_USERS
@@ -657,7 +657,7 @@ async def slider_queries(client, CallbackQuery, _):
 
 
 @app.on_message(
-   filters.command(["تشغيل ", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+   filters.command(["تشغيل", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
             
     & filters.group
     & ~BANNED_USERS
