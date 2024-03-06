@@ -1,6 +1,6 @@
 import random
 import string
-from strings.filters import command
+
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
@@ -23,11 +23,11 @@ from DAXXMUSIC.utils.inline import (
 from DAXXMUSIC.utils.logger import play_logs
 from DAXXMUSIC.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
-from strings import get_command
 
 
 @app.on_message(
-    command(PLAY_COMMAND)
+   filters.command(["تشغيل", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
+            
     & filters.group
     & ~BANNED_USERS
 )
