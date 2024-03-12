@@ -27,9 +27,9 @@ async def must_join_channel(app: Client, msg: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚", url=link),
-                            ]
-                        ]
-                    )
-                )
-                
+                                InlineKeyboardButton("♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚", url=link), 
+                    
+                ]
+            ]
+        )
+    )
