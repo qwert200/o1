@@ -27,9 +27,13 @@ async def must_join_channel(app: Client, msg: Message):
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚", url=link), 
-                    
-                ]
-            ]
-        )
-    )
+                                InlineKeyboardButton("♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚", url=link),
+                            ]
+                        ]
+                    )
+                )
+                await msg.stop_propagation()
+            except ChatWriteForbidden:
+                pass
+    except ChatAdminRequired:
+        print(f"ارفع البوت مشࢪف في القناة: {MUST_JOIN} !")
