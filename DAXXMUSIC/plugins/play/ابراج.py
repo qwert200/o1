@@ -2,13 +2,13 @@ import asyncio
 import config
 from pyrogram import Client, filters
 from pyrogram import filters
-from HamodyMusic import app
+from DAXXMUSIC import app
 from config import OWNER_ID
-from HamodyMusic.misc import SUDOERS
+from DAXXMUSIC.misc import SUDOERS
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, ReplyKeyboardMarkup
 from pyrogram.types import (InlineKeyboardButton,CallbackQuery,InlineKeyboardMarkup, Message)
-from HamodyMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from HamodyMusic.misc import SUDOERS
+from DAXXMUSIC import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+from DAXXMUSIC.misc import SUDOERS
 
 @app.on_message(filters.command(["ابراج"], ""))
 async def abrag(c: Client, m: Message):
