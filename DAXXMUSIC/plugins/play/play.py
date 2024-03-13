@@ -6,6 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
+from strings import get_command
 from DAXXMUSIC import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 from DAXXMUSIC.core.call import DAXX
 from DAXXMUSIC.utils import seconds_to_min, time_to_seconds
@@ -25,9 +26,12 @@ from DAXXMUSIC.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
 
+# Command
+PLAY_COMMAND = get_command("PLAY_COMMAND")
+
+
 @app.on_message(
-   filters.command(["تشغيل", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
-            
+    filters.command(PLAY_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
@@ -657,9 +661,8 @@ async def slider_queries(client, CallbackQuery, _):
 
 
 @app.on_message(
-   filters.command(["تشغيل", "فيديو", "شغل", "فيد", "playforce", "vplayforce", "cplayforce", "cvplayforce"] ,prefixes=["/", "!", "%", ",", "", ".", "@", "#"])
-            
-    & filters.group
+    filters.command(PLAY_COMMAND)
+    & filters.channel
     & ~BANNED_USERS
 )
 @PlayWrapper
