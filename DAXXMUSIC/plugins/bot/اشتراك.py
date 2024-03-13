@@ -10,12 +10,12 @@ from config import BANNED_USERS, lyrical
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message(
-      filters.incoming
-    & filters.private)
-@app.on_message(
-      filters.incoming
-    & filters.group)
+@app.on_message(filters.incoming
+    & filters.private
+)
+@app.on_message(filters.incoming
+    & filters.group
+)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
         return
