@@ -7,10 +7,10 @@ import random
 from datetime import datetime
 import requests
 import pytz
-from DAXXMUSIC.core.call import hamody
+from DAXXMUSIC.core.call import DAXX
 from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from DAXXMUSIC.core.call import hamody
+from DAXXMUSIC.core.call import DAXX
 from DAXXMUSIC.utils.database import *
 from pytgcalls.exceptions import (NoActiveGroupCall,TelegramServerError,AlreadyJoinedError)
 from pyrogram.errors import (
@@ -40,12 +40,12 @@ async def azaan(c, msg):
       
 async def kill():
   for i in chat:
-    await hamody.force_stop_stream(i)
+    await DAXX.force_stop_stream(i)
 
 
 async def play(i):
-  assistant = await group_assistant(hamody,i)
-  file_path = "./HamodyMusic/assets/azan.m4a"
+  assistant = await group_assistant(DAXX,i)
+  file_path = "./DAXXMUSIC/assets/azan.m4a"
   stream = AudioPiped(file_path, audio_parameters=HighQualityAudio())
   try:
       await assistant.join_group_call(
@@ -55,7 +55,7 @@ async def play(i):
       )
   except NoActiveGroupCall:
     try:
-        await hamody.join_assistant(i,i)
+        await DAXX.join_assistant(i,i)
     except Exception as e:
        await app.send_message(i,f"{e}")
   except TelegramServerError:
