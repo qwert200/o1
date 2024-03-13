@@ -1,5 +1,5 @@
 from pyrogram import filters, Client
-from HamodyMusic import app
+from DAXXMUSIC import app
 import asyncio
 from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
@@ -13,7 +13,7 @@ from pytgcalls.exceptions import (NoActiveGroupCall,TelegramServerError)
 async def strcall(client, message):
     assistant = await group_assistant(mody,message.chat.id)
     try:
-        await assistant.join_group_call(message.chat.id, AudioPiped("HamodyMusic/assets/call.mp3"), stream_type=StreamType().pulse_stream)
+        await assistant.join_group_call(message.chat.id, AudioPiped("DAXXMUSIC/assets/call.mp3"), stream_type=StreamType().pulse_stream)
         text="🔔 الاعضاء المتواجدين في المكالمه :\n\n"
         participants = await assistant.get_participants(message.chat.id)
         k =0
