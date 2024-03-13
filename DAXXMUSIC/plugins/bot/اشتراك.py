@@ -4,12 +4,13 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.enums import ChatType
 from pyrogram.errors import ChatAdminRequired, UserNotParticipant, ChatWriteForbidden
 from DAXXMUSIC import app
+from config import BANNED_USERS, lyrical
 
 #--------------------------
 
 MUST_JOIN = "ah07v"
 #------------------------
-@app.on_message( filters.incoming & filters.private, group=-1)
+@app.on_message( & filters.private & ~BANNED_USERS)
 async def must_join_channel(app: Client, msg: Message):
     if not MUST_JOIN:
         return
