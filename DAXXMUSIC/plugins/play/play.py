@@ -27,7 +27,9 @@ from config import BANNED_USERS, lyrical
 
 
 @app.on_message(
-    filters.command(["/play", "/vplay", "play", "vplay", "شغل", "تشغيل", "فديو", "فيديو"] ,prefixes=["/", "!", "%", ",", ".", "@", "#"])
+   filters.command(["play", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce","تشغيل","شغل","فيديو","فيد"] ,prefixes=["/", "!", "%", ",", ".", "@", "#"])
+            
+    & filters.group
     & ~BANNED_USERS
 )
 @PlayWrapper
@@ -491,8 +493,9 @@ async def play_commnd(
                 )
 
 @app.on_message(
-    filters.command(["/play", "/vplay", "play", "vplay", "شغل", "تشغيل", "فديو", "فيديو"] ,prefixes=["/", "!", "%", ",", ".", "@", "#"])
-    & filters.channel
+   filters.command(["play", "vplay", "cplay", "cvplay", "playforce", "vplayforce", "cplayforce", "cvplayforce","تشغيل","شغل","فيديو","فيد"] ,prefixes=["/", "!", "%", ",", ".", "@", "#"])
+            
+    & filters.group
     & ~BANNED_USERS
 )
 @PlayWrapper
