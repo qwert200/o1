@@ -6,11 +6,6 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from typing import Union
 from DAXXMUSIC import app
 
-@app.on_message(command("طرح"))
-async def Saidi(_, message: Message):
-    JABWA = "بلح"
-    await message.reply_text(AHMAD)
-   
 
 @app.on_message(command("احكام"))
 async def bottttt(client, message):
