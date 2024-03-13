@@ -31,7 +31,7 @@ PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 
 @app.on_message(
-    command(PLAY_COMMAND)
+    filters.command(PLAY_COMMAND)
     & filters.group
     & ~BANNED_USERS
 )
@@ -496,7 +496,7 @@ async def play_commnd(
                 )
 
 @app.on_message(
-    command(["/play", "/vplay", "play", "vplay", "شغل", "تشغيل", "فديو", "فيديو"])
+    filters.command(["/play", "/vplay", "play", "vplay", "شغل", "تشغيل", "فديو", "فيديو"])
     & filters.channel
     & ~BANNED_USERS
 )
