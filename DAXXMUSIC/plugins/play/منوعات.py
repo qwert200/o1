@@ -10,13 +10,12 @@ from pyrogram import filters
 import random
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
-from strings.filters import command
 from DAXXMUSIC import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from DAXXMUSIC import app
 from random import  choice, randint
 
 
-@app.on_message(command([f"شعر", "شع", "ش", "{BOT_USERNAME} شعر"]))
+@app.on_message(filters.command([f"شعر", "شع", "ش", "{BOT_USERNAME} شعر"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(8,20)
     url = f"https://t.me/saresnx/{rl}"
@@ -32,7 +31,7 @@ async def ihd(client: Client, message: Message):
     )
 
 
-@app.on_message(command(["غنيلي", "‹ غنيلي ›", "غ", ""]))
+@app.on_message(filters.command(["غنيلي", "‹ غنيلي ›", "غ", ""]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/proxMusicl/{rl}"
@@ -41,14 +40,14 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
 
-@app.on_message(command(["صوره", "🕷", "‹ صور ›", "صور"]))
+@app.on_message(filters.command(["صوره", "🕷", "‹ صور ›", "صور"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,50)
     url = f"https://t.me/vnnkli/{rl}"
@@ -57,14 +56,14 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
 
-@app.on_message(command(["‹ انمي ›", "انمي"]))
+@app.on_message(filters.command(["‹ انمي ›", "انمي"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/LoreBots7/{rl}"
@@ -73,14 +72,14 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
 
-@app.on_message(command(["‹ متحركه ›", "متحركه"]))
+@app.on_message(filters.command(["‹ متحركه ›", "متحركه"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/GifWaTaN/{rl}"
@@ -89,13 +88,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["‹ اقتباسات ›", "اقتباس"]))
+@app.on_message(filters.command(["‹ اقتباسات ›", "اقتباس"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/LoreBots9/{rl}"
@@ -104,13 +103,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["هيدرا", "‹ هيدرات ›"]))
+@app.on_message(filters.command(["هيدرا", "‹ هيدرات ›"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/flflfldld/{rl}"
@@ -119,13 +118,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["صور", " ‹ صور ›"]))
+@app.on_message(filters.command(["صور", " ‹ صور ›"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/vvyuol/{rl}"
@@ -134,13 +133,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["داعش", "افتار شباب"]))
+@app.on_message(filters.command(["شباب", "افتار شباب"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(2,90)
     url = f"https://t.me/mlscc_dhsb/{rl}"
@@ -149,13 +148,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["‹ قران ›", "قران"]))
+@app.on_message(filters.command(["‹ قران ›", "قران"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(1,90)
     url = f"https://t.me/lllIIlIllIlIIlI/{rl}"
@@ -164,13 +163,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["الشيخ", "النقشبندي", "نقشبندي"]))
+@app.on_message(filters.command(["الشيخ", "النقشبندي", "نقشبندي"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(1,90)
     url = f"https://t.me/ggcnjj/{rl}"
@@ -179,13 +178,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["فيلم", "‹ فيلم ›"]))
+@app.on_message(filters.command(["فيلم", "‹ فيلم ›"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(1,50)
     url = f"https://t.me/gyigkk/{rl}"
@@ -194,13 +193,13 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
     )
 
-@app.on_message(command(["استوري", "‹ ستوريات ›"]))
+@app.on_message(filters.command(["استوري", "‹ ستوريات ›"]))
 async def ihd(client: Client, message: Message):
     rl = random.randint(1,50)
     url = f"https://t.me/yoipopl/{rl}"
@@ -209,7 +208,7 @@ async def ihd(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        message.from_user.first_name, url=f"https://t.me/source_hamody")
+                        message.from_user.first_name, url=f"https://t.me/ah07v")
                 ],
             ]
         )
