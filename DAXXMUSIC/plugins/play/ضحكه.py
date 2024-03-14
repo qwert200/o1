@@ -5,7 +5,6 @@ import random
 from DAXXMUSIC import app
 from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, Message)
-from strings.filters import command
 from pyrogram import filters, Client
 from config import OWNER_ID
 
@@ -59,7 +58,7 @@ txt1 = [
         
 
 
-@app.on_message(command(["ههههههههههههههههههههههه","😂😂","😂","🤣","ههههههههههههههههههه","😹😹"]))
+@app.on_message(filters.command(["ههههههههههههههههههههههه","😂😂","😂","🤣","ههههههههههههههههههه","😹😹"]))
 
 
 async def cutt(client: Client, message: Message):
