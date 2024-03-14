@@ -26,7 +26,8 @@ WelcomeMember = "اهلا بك ياعزيزي المستخدم!"  # رساله �
 
 
 
-@app.on_message(filters.regex("^hmd$"))
+bot.set_my_commands([
+    BotCommand("hmd", "بدء")
 ])
 
 
