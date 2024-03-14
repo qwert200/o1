@@ -38,6 +38,3 @@ def main(message:Message):
 
 
     
-bot.register_message_handler(main)
-
-bot.infinity_polling(skip_pending=True)
