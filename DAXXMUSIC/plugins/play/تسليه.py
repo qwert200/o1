@@ -13,8 +13,7 @@ from pyrogram.enums import ParseMode, ChatMemberStatus
 
 
 iddof = []
-@app.on_message(
-     command(["قفل العاب","تعطيل العاب"])
+@app.on_message(filters.command(["قفل العاب","تعطيل العاب"])
      & filters.group
 
    
@@ -37,8 +36,7 @@ async def iddlock(client:Client, message:Message):
     else:
         return await message.reply_text(f"**يا {message.from_user.mention} انت لست مشرفا هنا**")
 ##|hamody .
-@app.on_message(
-    command(["فتح العاب","تفعيل العاب"])
+@app.on_message(filters.command(["فتح العاب","تفعيل العاب"])
     & filters.group
 )
 async def idljjopen(client:Client, message:Message):
@@ -59,7 +57,7 @@ async def idljjopen(client:Client, message:Message):
     else:
         return await message.reply_text(f"**يا {message.from_user.mention} انت لست مشرفا هنا**")
 ##|hamody .  
-@app.on_message(command(['زوجني','ز']))
+@app.on_message(filters.command(['زوجني','ز']))
 def iddd(client:Client, message:Message):
     chat_id = message.chat.id
     if chat_id in iddof:
@@ -75,7 +73,7 @@ def iddd(client:Client, message:Message):
         f"• اخترت لك هذا الشخص \n {random_member_mention} \n **"
     ])
     client.send_message(chat_id, random_message, reply_to_message_id= message.id)
-@app.on_message(command(['اقتباس','ق']))
+@app.on_message(filters.command(['اقتباس','ق']))
 def call_random_member(client:Client, message:Message):
     chat_id = message.chat.id
     members = [
@@ -109,7 +107,7 @@ def call_random_member(client:Client, message:Message):
          f"**-اليك اقتباس اليوم ❤️\n│ ل {random_member_mention}\n النجاح هو القدرة على الذهاب من فشل إلى فشل بدون فقد أرزاقك الحماس **", 
     ])
     client.send_message(chat_id, random_message, reply_to_message_id= message.id)
-@app.on_message(command(['نداء','ن']))
+@app.on_message(filters.command(['نداء','ن']))
 def call_random_member(client:Client, message:Message):
     chat_id = message.chat.id
     members = [
