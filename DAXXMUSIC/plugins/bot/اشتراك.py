@@ -8,34 +8,36 @@ from config import BANNED_USERS, lyrical
 
 #--------------------------
 
-MUST_JOIN = "ah07v"
+
 #------------------------
-@app.on_message( filters.incoming & filters.private, group=-1)
-@app.on_message( filters.incoming & filters.group, group=-1)
-async def must_join_channel(app: Client, msg: Message):
-    if not MUST_JOIN:
-        return
+chid = "ah07v"
+
+
+def main_mark():
+    invite = bot.create_chat_invite_link(chid)
+    InviteLink = invite.invite_link
+    mrkplink = InlineKeyboardMarkup()
+    mrkplink.add(InlineKeyboardButton("اشترك في قناة البوت لاستخدام الاوامر! 🚀", url=InviteLink))
+    return mrkplink
+
+
+def main(message:Message):
+    user_id = message.from_user.id
+    pr_id = message.chat.id
+    div = myId == user_id
     try:
-        try:
-            await app.get_chat_member(MUST_JOIN, msg.from_user.id)
-        except UserNotParticipant:
-            if MUST_JOIN.isalpha():
-                link = "https://t.me/" + MUST_JOIN
-            else:
-                chat_info = await app.get_chat(MUST_JOIN)
-                link = chat_info.invite_link
-            try:
-                await msg.reply(f"︙عـذراً، عـلـيـڪ الانـضـمـام الى هـذهِ الـقـنـاة أولاً  [ ♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚ ]({link}) \n︙اشـتـرڪ ثـم أرسـل : /start",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("♚...« مـكـنـوناتي 𝙷𝙼𝙳 »... ♚", url=link),
-                            ]
-                        ]
-                    )
-                )
-                await msg.stop_propagation()
-            except ChatWriteForbidden:
-                pass
-    except ChatAdminRequired:
-        print(f"ارفع البوت مشࢪف في القناة: {MUST_JOIN} !")
+        request = bot.get_chat_member(chid, user_id).status
+        List_ch = ['member', 'administrator, creator']
+        if request in List_ch or div:
+            bot.send_message(pr_id, "اهلا بك عزيزي, مرحبا بعودتك!")
+        else:
+            bot.send_message(pr_id, "اهلا بك عزيزي, اشترك في قناة البوت اولا!", reply_markup=main_mark())
+    except:
+        bot.send_message(pr_id,"البوت غير موجود في قناة الاشتراك!" )
+
+
+
+    
+bot.register_message_handler(main)
+
+bot.infinity_polling(skip_pending=True)
