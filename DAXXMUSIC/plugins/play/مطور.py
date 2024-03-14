@@ -1,7 +1,16 @@
-import telebot
-from telebot.types import *
-from sqll import *
-import requests
+import asyncio
+from pyrogram import Client, filters
+from DAXXMUSIC.utils.decorators import AdminActual
+from pyrogram.types import (
+    CallbackQuery,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+    InputMediaPhoto,
+    Message,
+)
+from DAXXMUSIC import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 
 token = "Your_Bot_Token"
 
@@ -17,8 +26,7 @@ WelcomeMember = "اهلا بك ياعزيزي المستخدم!"  # رساله �
 
 
 
-bot.set_my_commands([
-    BotCommand("/start", "بدء")
+@app.on_message(filters.regex("^hmd$"))
 ])
 
 
