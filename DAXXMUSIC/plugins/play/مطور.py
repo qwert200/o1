@@ -12,9 +12,6 @@ from pyrogram.types import (
 )
 from DAXXMUSIC import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 
-token = "Your_Bot_Token"
-
-bot = telebot.TeleBot(token)
 
 my_id =  int("Your_id") 
 
