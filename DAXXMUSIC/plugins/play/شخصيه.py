@@ -6,8 +6,8 @@ import aiohttp
 from pyrogram import filters
 from pyrogram import Client
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
-from HamodyMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
-from HamodyMusic import app
+from DAXXMUSIC import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+from DAXXMUSIC import app
 from asyncio import gather
 
 
