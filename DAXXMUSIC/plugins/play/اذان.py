@@ -76,7 +76,7 @@ async def play(i):
 
 def prayer_time():
    try:
-       prayer = requests.get(f"http://api.aladhan.com/timingsByAddress?address=Cairo&method=4&school=0")
+       prayer = requests.get(f"http://api.aladhan.com/timingsByAddress?address=Baghdad&method=4&school=0")
        prayer = prayer.json()
        fajr = datetime.strptime(prayer['data']['timings']['Fajr'], '%H:%M').strftime('%I:%M %p')
        dhuhr = datetime.strptime(prayer['data']['timings']['Dhuhr'], '%H:%M').strftime('%I:%M %p')
